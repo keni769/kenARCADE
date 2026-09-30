@@ -23,7 +23,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
@@ -35,7 +35,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Area2D:position")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
@@ -81,10 +81,14 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlupe"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fhnn"]
+size = Vector2(2495.4082, 22.316833)
+
 [node name="minigame_1" type="Node2D" unique_id=861182409]
 script = ExtResource("1_vc5od")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2004309106]
+scale = Vector2(1.1, 1.1)
 scroll_offset = Vector2(0, 714)
 repeat_size = Vector2(2000, 1000)
 autoscroll = Vector2(100, 0)
@@ -92,11 +96,11 @@ follow_viewport = false
 ignore_camera_scroll = true
 
 [node name="Background" type="TextureRect" parent="Parallax2D" unique_id=1497148747]
-offset_left = -1395.9999
-offset_top = -897.9999
-offset_right = -243.99988
-offset_bottom = -249.99988
-scale = Vector2(3.7984965, 3.9377415)
+offset_left = -1396.0
+offset_top = -897.69
+offset_right = -244.0
+offset_bottom = -249.69
+scale = Vector2(4.028, 4.17)
 texture = ExtResource("2_xpvfh")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -178,7 +182,9 @@ texture = ExtResource("6_00jeu")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlueB" unique_id=1503680657]
+reset_on_save = false
 libraries/ = SubResource("AnimationLibrary_jife1")
+autoplay = &"float"
 
 [node name="Area2D" type="Area2D" parent="BlueB" unique_id=1542139036]
 position = Vector2(32, 36)
@@ -190,7 +196,7 @@ scale = Vector2(1, 0.91443866)
 shape = SubResource("CircleShape2D_qlupe")
 
 [node name="BlueB2" type="Node2D" parent="." unique_id=936142607]
-position = Vector2(217, 491)
+position = Vector2(217, 515)
 script = ExtResource("5_1digs")
 
 [node name="TextureRect" type="TextureRect" parent="BlueB2" unique_id=1456606654]
@@ -201,6 +207,7 @@ texture = ExtResource("6_00jeu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlueB2" unique_id=276790968]
 libraries/ = SubResource("AnimationLibrary_jife1")
+autoplay = &"float"
 
 [node name="Area2D" type="Area2D" parent="BlueB2" unique_id=130824751]
 position = Vector2(32, 36)
@@ -224,6 +231,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlueB3" unique_id=1012559299]
 libraries/ = SubResource("AnimationLibrary_jife1")
+autoplay = &"float"
 
 [node name="Area2D" type="Area2D" parent="BlueB3" unique_id=644284964]
 position = Vector2(32, 36)
@@ -238,12 +246,20 @@ shape = SubResource("CircleShape2D_qlupe")
 position = Vector2(685, 842)
 
 [node name="timer" type="RichTextLabel" parent="ThemedTimer" unique_id=1369382860]
-offset_left = -676.0
-offset_top = -105.0
-offset_right = -570.0
-offset_bottom = -72.0
+offset_left = -249.0
+offset_top = -126.0
+offset_right = -143.0
+offset_bottom = -93.0
 scale = Vector2(2.3162544, 1.9485555)
 theme_override_constants/outline_size = 20
+
+[node name="DeathBarrier" type="Area2D" parent="." unique_id=2023391866]
+position = Vector2(436, 716)
+scale = Vector2(2.3162544, 1.9485555)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBarrier" unique_id=1288603644]
+position = Vector2(484.83447, 768.77466)
+shape = SubResource("RectangleShape2D_2fhnn")
 
 [node name="Player" parent="." unique_id=820917427 instance=ExtResource("4_oxfl2")]
 position = Vector2(85, 865)
@@ -264,3 +280,4 @@ drag_horizontal_enabled = true
 [connection signal="garlic_collected" from="BlueB" to="." method="_on_node_2d_garlic_collected"]
 [connection signal="garlic_collected" from="BlueB2" to="." method="_on_node_2d_garlic_collected"]
 [connection signal="garlic_collected" from="BlueB3" to="." method="_on_node_2d_garlic_collected"]
+[connection signal="body_entered" from="DeathBarrier" to="." method="_on_death_barrier_body_entered"]

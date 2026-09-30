@@ -445,3 +445,18 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608,
 scale = Vector2(0.2, 0.2)
 tile_set = SubResource("TileSet_nnuov")
 format = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1047034334]
+wait_time = 0.2
+autostart = true
+
+[node name="Score" type="Label" parent="." unique_id=1207137559]
+offset_left = 35.0
+offset_top = 22.0
+offset_right = 132.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+theme_override_font_sizes/font_size = 18
+text = "Score: 0/15"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

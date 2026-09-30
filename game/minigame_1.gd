@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 
 		if Global.lives <= 0:
 			get_tree().change_scene_to_file(
-				"res://scenes/title_screen.tscn"
+				"res://scenes/death.tscn"
 			)
 		else:
 			get_tree().change_scene_to_file(
@@ -61,3 +61,11 @@ func garlic_collect() -> void:
 func _on_node_2d_garlic_collected() -> void:
 	garlic_collected += 1
 	print("Blueberries collected: ", garlic_collected)
+
+
+func _on_death_barrier_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		Global.lives -= 1
+		get_tree().change_scene_to_file(
+			"res://scenes/timer_screen.tscn"
+		)

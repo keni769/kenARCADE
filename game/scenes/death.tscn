@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bga7el1frvrtd"]
+
+[ext_resource type="Texture2D" uid="uid://cgyrtdmvsym7d" path="res://Untitled (6).png" id="1_qemge"]
+
+[node name="Node2D" type="Node2D" unique_id=689058215]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1125053486]
+offset_left = -39.0
+offset_right = 961.0
+offset_bottom = 1000.0
+scale = Vector2(1.075, 1.075)
+texture = ExtResource("1_qemge")

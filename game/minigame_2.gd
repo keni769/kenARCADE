@@ -8,7 +8,7 @@ var finished := false
 
 
 func _ready() -> void:
-	await themed_timer.Timer(10.0)
+	await themed_timer.Timer(8.0)
 
 	if not finished:
 		timer_end = true
@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 
 		if Global.lives <= 0:
 			get_tree().change_scene_to_file(
-				"res://scenes/title_screen.tscn"
+				"res://scenes/death.tscn"
 			)
 		else:
 			get_tree().change_scene_to_file(
