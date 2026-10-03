@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bwjhebp2dqrpn"]
 
 [ext_resource type="Script" uid="uid://4h67cojm2hwq" path="res://minigame_2.gd" id="1_6co8m"]
-[ext_resource type="Texture2D" uid="uid://b8slqvrgrrpi6" path="res://Untitled (1).png" id="2_tbdge"]
-[ext_resource type="Texture2D" uid="uid://bsos4da56nt1m" path="res://fruit-blueberry-european-blueberry-berries-bog-bilberry-cartoon-vaccinium-cobalt-blue-png-clipart-thumbnail-removebg-preview (1).png" id="3_my5wa"]
+[ext_resource type="Texture2D" uid="uid://b8slqvrgrrpi6" path="res://Assets/Untitled (1).png" id="2_tbdge"]
+[ext_resource type="Texture2D" uid="uid://bsos4da56nt1m" path="res://Assets/fruit-blueberry-european-blueberry-berries-bog-bilberry-cartoon-vaccinium-cobalt-blue-png-clipart-thumbnail-removebg-preview (1).png" id="3_my5wa"]
 [ext_resource type="Script" uid="uid://cslg0ggat07l1" path="res://button_1.gd" id="4_r0kah"]
 [ext_resource type="Script" uid="uid://bglj27nche712" path="res://button_3.gd" id="6_srbim"]
 [ext_resource type="Script" uid="uid://ckc6o16qo3eve" path="res://button_4.gd" id="7_6kqj5"]
 [ext_resource type="Script" uid="uid://dgo8e5vo51d2c" path="res://button_5.gd" id="8_xkm0r"]
+[ext_resource type="Texture2D" uid="uid://cgyrtdmvsym7d" path="res://Assets/Untitled (6).png" id="9_6co8m"]
 [ext_resource type="PackedScene" uid="uid://svwag6t4qwea" path="res://scenes/Gtimer.tscn" id="9_otdci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38v6o"]
@@ -89,6 +90,15 @@ offset_top = -201.00003
 offset_right = 257.09998
 offset_bottom = -193.90002
 scale = Vector2(10, 10)
+
+[node name="Fade" type="CanvasLayer" parent="." unique_id=1403401210]
+
+[node name="death_screen" type="TextureRect" parent="Fade" unique_id=169933697]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("9_6co8m")
 
 [connection signal="pressed" from="Button_1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="Button_1" to="Button_1" method="_on_pressed"]

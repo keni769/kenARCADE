@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var themed_timer: Node2D = $ThemedTimer
+@onready var death_screen: TextureRect = $Fade/death_screen
 
 var buttons_pressed := 0
 var timer_end := false
@@ -8,7 +9,7 @@ var finished := false
 
 
 func _ready() -> void:
-	await themed_timer.Timer(8.0)
+	await themed_timer.Timer(8)
 
 	if not finished:
 		timer_end = true
@@ -16,16 +17,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 
-	# Successfully completed Minigame 2
 	if buttons_pressed >= 5 and not finished:
 		finished = true
 
-		print("MINIGAME 2 COMPLETE!")
-		print("Before: minigames_done = ", Global.minigames_done)
-
 		Global.minigames_done += 1
 
-		print("After: minigames_done = ", Global.minigames_done)
 
 		if Global.minigames_done >= 3:
 			get_tree().change_scene_to_file(
@@ -43,13 +39,13 @@ func _process(_delta: float) -> void:
 
 		Global.lives -= 1
 
-		print("MINIGAME 2 FAILED")
-		print("Lives remaining: ", Global.lives)
-		print("Minigames done: ", Global.minigames_done)
-
 		if Global.lives <= 0:
-			get_tree().change_scene_to_file(
-				"res://scenes/death.tscn"
+			var tween = create_tween()
+			tween.tween_property(
+				death_screen,
+				"modulate:a",
+				1,
+				1
 			)
 		else:
 			get_tree().change_scene_to_file(
@@ -59,5 +55,3 @@ func _process(_delta: float) -> void:
 
 func _on_button_1_pressed() -> void:
 	buttons_pressed += 1
-
-	print("Buttons pressed: ", buttons_pressed)

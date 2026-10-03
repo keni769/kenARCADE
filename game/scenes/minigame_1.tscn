@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://dwt7h3tskoser"]
 
 [ext_resource type="Script" uid="uid://b7vc5kaabeyci" path="res://minigame_1.gd" id="1_vc5od"]
-[ext_resource type="Texture2D" uid="uid://b8slqvrgrrpi6" path="res://Untitled (1).png" id="2_xpvfh"]
-[ext_resource type="Texture2D" uid="uid://cflepm8qdw8is" path="res://tesxts.png" id="3_r58ir"]
+[ext_resource type="Texture2D" uid="uid://b8slqvrgrrpi6" path="res://Assets/Untitled (1).png" id="2_xpvfh"]
+[ext_resource type="Texture2D" uid="uid://cflepm8qdw8is" path="res://Assets/tesxts.png" id="3_r58ir"]
 [ext_resource type="PackedScene" uid="uid://5sgy0k2htp7b" path="res://player.tscn" id="4_oxfl2"]
 [ext_resource type="Script" uid="uid://cj3ryiqjjgtyh" path="res://anim.gd" id="5_1digs"]
-[ext_resource type="Texture2D" uid="uid://bsos4da56nt1m" path="res://fruit-blueberry-european-blueberry-berries-bog-bilberry-cartoon-vaccinium-cobalt-blue-png-clipart-thumbnail-removebg-preview (1).png" id="6_00jeu"]
+[ext_resource type="Texture2D" uid="uid://bsos4da56nt1m" path="res://Assets/fruit-blueberry-european-blueberry-berries-bog-bilberry-cartoon-vaccinium-cobalt-blue-png-clipart-thumbnail-removebg-preview (1).png" id="6_00jeu"]
 [ext_resource type="PackedScene" uid="uid://svwag6t4qwea" path="res://scenes/Gtimer.tscn" id="7_6n0yg"]
+[ext_resource type="Texture2D" uid="uid://cgyrtdmvsym7d" path="res://Assets/Untitled (6).png" id="8_xpvfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlupe"]
 size = Vector2(592.49475, 163.49997)
@@ -86,6 +87,16 @@ size = Vector2(2495.4082, 22.316833)
 
 [node name="minigame_1" type="Node2D" unique_id=861182409]
 script = ExtResource("1_vc5od")
+
+[node name="Background" type="TextureRect" parent="." unique_id=418148299]
+offset_left = -2604.0
+offset_top = 2565.9998
+offset_right = -1452.0
+offset_bottom = 3213.9998
+scale = Vector2(4.028, 4.17)
+texture = ExtResource("2_xpvfh")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=2004309106]
 scale = Vector2(1.1, 1.1)
@@ -276,6 +287,14 @@ limit_top = 0
 limit_right = 1152
 limit_bottom = 648
 drag_horizontal_enabled = true
+
+[node name="Fade" type="CanvasLayer" parent="." unique_id=805434168]
+
+[node name="death_screen" type="TextureRect" parent="Fade" unique_id=1738033836]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_xpvfh")
 
 [connection signal="garlic_collected" from="BlueB" to="." method="_on_node_2d_garlic_collected"]
 [connection signal="garlic_collected" from="BlueB2" to="." method="_on_node_2d_garlic_collected"]

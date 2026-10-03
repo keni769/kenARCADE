@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3s2ebeof5men"]
 
-[ext_resource type="Texture2D" uid="uid://buo78bisynrlo" path="res://808613984_1405623305108421_3845232239283589649_n.jpg" id="1_7avge"]
+[ext_resource type="Texture2D" uid="uid://buo78bisynrlo" path="res://Assets/808613984_1405623305108421_3845232239283589649_n.jpg" id="1_7avge"]
 
 [node name="Node2D" type="Node2D" unique_id=1760203218]
 

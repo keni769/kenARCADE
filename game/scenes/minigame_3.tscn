@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://5lr1nes0jbog"]
 
 [ext_resource type="Script" uid="uid://ctv84ge2lpqew" path="res://minigame_3.gd" id="1_vhxdv"]
-[ext_resource type="Texture2D" uid="uid://dml3n6s11gllf" path="res://Untitled (4).png" id="2_yiing"]
-[ext_resource type="Texture2D" uid="uid://cdkhqkcy7i4cu" path="res://Snake.png" id="3_yiing"]
-[ext_resource type="Texture2D" uid="uid://bbnrelid1r4ee" path="res://Blueberry.png" id="4_yiing"]
+[ext_resource type="Texture2D" uid="uid://dml3n6s11gllf" path="res://Assets/Untitled (4).png" id="2_yiing"]
+[ext_resource type="Texture2D" uid="uid://cdkhqkcy7i4cu" path="res://Assets/Snake.png" id="3_yiing"]
+[ext_resource type="Texture2D" uid="uid://bbnrelid1r4ee" path="res://Assets/Blueberry.png" id="4_yiing"]
+[ext_resource type="Texture2D" uid="uid://cgyrtdmvsym7d" path="res://Assets/Untitled (6).png" id="5_nuwo7"]
+[ext_resource type="Texture2D" uid="uid://f43r7xvhy4ji" path="res://Assets/Untitled (7).png" id="6_rguwe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_knknf"]
 texture = ExtResource("2_yiing")
@@ -459,4 +461,32 @@ scale = Vector2(2, 2)
 theme_override_font_sizes/font_size = 18
 text = "Score: 0/15"
 
+[node name="Fade" type="CanvasLayer" parent="." unique_id=1455921445]
+
+[node name="death_screen" type="TextureRect" parent="Fade" unique_id=360598126]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_nuwo7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=137509892]
+
+[node name="done_screen" type="TextureRect" parent="CanvasLayer" unique_id=1909315734]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rguwe")
+
+[node name="blue" type="TextureButton" parent="CanvasLayer" unique_id=322333470]
+modulate = Color(1, 1, 1, 0)
+offset_left = 372.0
+offset_top = 427.0
+offset_right = 622.0
+offset_bottom = 677.0
+texture_normal = ExtResource("4_yiing")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/blue" to="." method="_on_blue_pressed"]

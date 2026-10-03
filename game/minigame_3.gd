@@ -1,4 +1,7 @@
 extends Node2D
+@onready var death_screen: TextureRect = $Fade/death_screen
+@onready var done_screen: TextureRect = $CanvasLayer/done_screen
+@onready var blue: TextureButton = $CanvasLayer/blue
 
 const SNAKE = 0
 const BLUEBERRY = 1
@@ -97,7 +100,13 @@ func lose_game():
 	Global.lives -= 1
 
 	if Global.lives <= 0:
-		get_tree().change_scene_to_file("res://scenes/death.tscn")
+		var tween = create_tween()
+		tween.tween_property(
+			death_screen,
+			"modulate:a",
+			1.0,
+			1.0
+		)
 	else:
 		get_tree().change_scene_to_file("res://scenes/timer_screen.tscn")
 
@@ -107,8 +116,22 @@ func win_game():
 
 	finished = true
 	Global.minigames_done += 1
-	get_tree().change_scene_to_file("res://scenes/done_screen.tscn")
 
+	var tween = create_tween()
+
+	tween.tween_property(
+		done_screen,
+		"modulate:a",
+		1,
+		1
+	)
+
+	tween.parallel().tween_property(
+		blue,
+		"modulate:a",
+		1,
+		0.5
+	)
 func _on_timer_timeout():
 	move_snake()
 
@@ -122,3 +145,7 @@ func _on_timer_timeout():
 
 	draw_bb()
 	draw_snake()
+
+
+func _on_blue_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
